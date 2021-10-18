@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+    	<title>Calculette</title>
+    	<meta charset="utf-8">
+        <meta name="keywords" content="green, calculette, consommation">
+        <meta name="description" content="Une calculette !">
+        <meta name="author" content="Enzo Landais">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+
+    <script>
+	    function conso_elec(){
+	    	let PA = document.getElementById("elec_PA").value;
+	    	let PL = document.getElementById("elec_PL").value;
+	    	let PO = document.getElementById("elec_PO").value;
+	    	let HA = document.getElementById("elec_HA").value;
+	    	let HL = document.getElementById("elec_HL").value;
+	    	let HO = document.getElementById("elec_HO").value;
+	    	let SPM =((30/100*(PA*HA+PL*HL+PO*HO)/7)*365/1000 + ((1-30/100)*(PA*(HA+HL)+PO*HO)/7)*365/1000);
+	    	document.getElementsByClassName("elec")[0].innerHTML = "Consommation énergétique = " + SPM.toFixed(2) + " W.h";}</script></head>
+
+  	<header><h1 class='titre'>Calculette</h1></header>
+
+  	<nav><ul><li><a href="index.html">Calculer</a></li>
+			 <li><a href="presentation.html">Qui nous sommes</a></li></ul></nav>
+
+    <body>
+    	<div class="electrique">
+	    	<input id="elec_PA" type="number" placeholder="Consommation (W, actif)"/>
+	  		<input id="elec_PL" type="number" placeholder="Consommation (W, veille)"/>
+	  		<input id="elec_PO" type="number" placeholder="Consommation (W, arrêt)"/>
+	  		<input id="elec_HA" type="number" placeholder="Utilisation (h, actif)"/>
+	  		<input id="elec_HL" type="number" placeholder="Utilisation (h, veille)"/>
+	  		<input id="elec_HO" type="number" placeholder="Utilisation (h, arrêt)"/>
+
+	  		<button onclick="conso_elec()">Calculer</button>
+			<p class="elec"></p></div>
+    		
+    	</div>
+    </body>
+
+</html>
