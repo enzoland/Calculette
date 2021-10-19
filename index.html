@@ -8,7 +8,6 @@
         <meta name="description" content="Une calculette !">
         <meta name="author" content="Enzo Landais">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style/style.css">
 
     <script>
 	    function conso_elec(){
@@ -19,15 +18,39 @@
 	    	let HL = document.getElementById("elec_HL").value;
 	    	let HO = document.getElementById("elec_HO").value;
 	    	let SPM =((30/100*(PA*HA+PL*HL+PO*HO)/7)*365/1000 + ((1-30/100)*(PA*(HA+HL)+PO*HO)/7)*365/1000);
-	    	document.getElementsByClassName("elec")[0].innerHTML = "Consommation énergétique = " + SPM.toFixed(2) + " W.h";}</script></head>
+	    	document.getElementsByClassName("elec")[0].innerHTML =
+
+	    		"Consommation énergétique = " + (SPM/1000).toFixed(3) + " kW.h\n"
+
+	    		+ "Équivalent CO2 : " + (SPM/10000).toFixed(4) + " kg\n"
+
+	    		+ "Sur un an : " + (SPM/10000).toFixed(5)*24*30*12 + " kg";}</script></head>
 
   	<header><h1 class='titre'>Calculette</h1></header>
 
-  	<nav><ul><li><a href="index.html">Calculer</a></li>
-			 <li><a href="presentation.html">Qui nous sommes</a></li></ul></nav>
+  	<style type="text/css">
+  		header {
+  			background-color: gray;
+  			padding: 20px;
+  			margin: 0px 0px 10px;
+  			text-align: center;
+  			font-family: arial;
+  		}
+		div.electrique {
+  			background-color: #288DCB;
+  			padding: 20px;
+  			font-family: arial;
+  			margin: 0px 0px 10px;;
+		}
+		p.sous-titre {
+			font-family: arial;
+			font-size: 20px;
+		}
+	</style>
 
     <body>
     	<div class="electrique">
+    		<p class="sous-titre">Consommation électrique de votre ordinateur :</p>
 	    	<input id="elec_PA" type="number" placeholder="Consommation (W, actif)"/>
 	  		<input id="elec_PL" type="number" placeholder="Consommation (W, veille)"/>
 	  		<input id="elec_PO" type="number" placeholder="Consommation (W, arrêt)"/>
