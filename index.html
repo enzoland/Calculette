@@ -24,7 +24,15 @@
 
 	    		+ "Équivalent CO2 : " + (SPM/10000).toFixed(4) + " kg\n"
 
-	    		+ "Sur un an : " + (SPM/10000).toFixed(5)*24*30*12 + " kg";}</script></head>
+	    		+ "Sur un an : " + (SPM/10000).toFixed(5)*24*30*12 + " kg";}
+
+	    function conso_bus(){
+	    	let bus_h = document.getElementById("bus_h").value;
+	    	let bus_sem = document.getElementById("bus_sem").value;
+	    	let total = bus_h*bus_sem*2;
+	    	document.getElementsByClassName("bus")[0].innerHTML =
+
+	    		"Impact bus = " + total + " kg";}</script></head>
 
   	<header><h1 class='titre'>Calculette</h1></header>
 
@@ -36,7 +44,7 @@
   			text-align: center;
   			font-family: arial;
   		}
-		div.electrique {
+		div.calcul{
   			background-color: #288DCB;
   			padding: 20px;
   			font-family: arial;
@@ -49,7 +57,7 @@
 	</style>
 
     <body>
-    	<div class="electrique">
+    	<div class="calcul">
     		<p class="sous-titre">Consommation électrique de votre ordinateur :</p>
 	    	<input id="elec_PA" type="number" placeholder="Consommation (W, actif)"/>
 	  		<input id="elec_PL" type="number" placeholder="Consommation (W, veille)"/>
@@ -62,5 +70,15 @@
 			<p class="elec"></p></div>
     		
     	</div>
+    	<div class="calcul">
+    		<p class="sous-titre">L'empreinte de vos déplacements</p>
+	    	<input id="bus_h" type="number" placeholder="Heures/semaine"/>
+	  		<input id="bus_sem" type="number" placeholder="Nombre de semaines"/>
+
+	  		<button onclick="conso_bus()">Calculer</button>
+			<p class="bus"></p></div>
+    		
+    	</div>
     </body>
+
 </html>
