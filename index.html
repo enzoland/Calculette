@@ -2,7 +2,7 @@
 
 <html lang="fr">
     <head>
-    	<title>Calculette</title>
+    	<title>Projet - Calculette Éco-conception logicielle</title>
     	<meta charset="utf-8">
         <meta name="keywords" content="green, calculette, consommation">
         <meta name="description" content="Une calculette !">
@@ -58,9 +58,47 @@
 	    	let km_an = document.getElementById("km_an_t").value;
 	    	document.getElementsByClassName("train")[0].innerHTML =
 
-	    		"Train = " + (km_an*0.01).toFixed(2) + " kgCO2e";}</script></head>
+	    		"Train = " + (km_an*0.01).toFixed(2) + " kgCO₂e / an";}
 
-  	<header><h1 class='titre'>Calculette</h1></header>
+	    function conso_totale() {
+	    	let telephone_age = document.getElementById("telephone_age").value;
+	    	let tv_age = document.getElementById("tv_age").value;
+	    	let temps_internet = document.getElementById("temps_internet").value;
+	    	let bus_h = document.getElementById("bus_h").value;
+	    	let bus_sem = document.getElementById("bus_sem").value;
+	    	let age_voiture = document.getElementById("age_voiture").value;
+	    	let km_an = document.getElementById("km_an_v").value;
+	    	let km_an_ = document.getElementById("km_an_t").value;
+	    	let PA = document.getElementById("elec_PA").value;
+	    	let PL = document.getElementById("elec_PL").value;
+	    	let PO = document.getElementById("elec_PO").value;
+	    	let HA = document.getElementById("elec_HA").value;
+	    	let HL = document.getElementById("elec_HL").value;
+	    	let HO = document.getElementById("elec_HO").value;
+
+	    	var startTime = new Date().getTime();
+			var elapsedTime = 0;
+
+			document.getElementsByClassName("total")[0].innerHTML =
+
+	    		"Total = "
+	    		+ ((((30/100*(PA*HA+PL*HL+PO*HO)/7)*365/1000 + ((1-30/100)*(PA*(HA+HL)+PO*HO)/7)*365/1000)/10000)*24*30*12
+	    		+ 39.1/(telephone_age+1)
+	    		+ 0.01/(tv_age+1)
+	    		+ (0.01*temps_internet)*365
+	    		+ bus_h*bus_sem*2
+	    		+ ((age_voiture < 10 ? 5600*5/100 : 0) + km_an*0.2)/1.2
+	    		+ km_an*0.01
+
+	    		).toFixed(2) + " kgCO₂e / an";
+
+			elapsedTime = new Date().getTime() - startTime;
+
+			document.getElementsByClassName("temps_execution")[0].innerHTML = "Temps d'exécution : " + elapsedTime;
+
+	    	}</script></head>
+
+  	<header><h1 class='titre'>Projet - Calculette Éco-conception logicielle</h1></header>
 
   	<style type="text/css">
   		header {
@@ -108,7 +146,7 @@
 		}
 		p#resultat {
 			background-color: #4CAF50;
-  			border-radius: 12px;
+  			border-radius: 8px;
   			font-size: 22px;
   			text-align: center;
   			width: 320px;
@@ -121,7 +159,32 @@
 		}
 		body {
 			background: black;
+			font-family: arial;
 		}
+		button.total__ {
+			background-color: #4CAF50;
+  			border-radius: 16px;
+  			font-size: 25px;
+  			margin: 10px auto;
+		}
+		p.total {
+			background-color: #4CAF50;
+  			border-radius: 24px;
+  			border-color: #3C8A40;
+  			border-width: 5px;
+  			max-width: 500px;
+  			text-align: center;
+  			font-size: 35px;
+  			margin: 15px auto;
+  			font-weight: bold;
+		}
+		div.total_ {
+			text-align: center;
+		}
+		.temps_execution {
+			color: white;
+		}
+
 	</style>
 
     <body>
@@ -162,7 +225,7 @@
     		
     	</div>
     	<div class="calcul">
-    		<p class="sous-titre">L'empreinte du transport</p>
+    		<p class="sous-titre">Empreinte de déplacement</p>
     		<p class="sous-sous-titre">Bus</p>
 	    	<input id="bus_h" type="number" placeholder="Heures/semaine"/>
 	  		<input id="bus_sem" type="number" placeholder="Nombre de semaines"/>
@@ -185,8 +248,10 @@
     		
     	</div>
 
-    	<div class="total">
-    		<p id="total"></p>
+    	<div class="total_">
+    		<button class="total__" onclick="conso_totale()">Calculer le total</button>
+    		<p class="total"></p>
+    		<p class="temps_execution"></p>
     	</div>
     </body>
 </html>
