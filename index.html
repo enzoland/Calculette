@@ -17,117 +17,135 @@
 	    	let HA = document.getElementById("elec_HA").value;
 	    	let HL = document.getElementById("elec_HL").value;
 	    	let HO = document.getElementById("elec_HO").value;
-	    	let SPM =((30/100*(PA*HA+PL*HL+PO*HO)/7)*365/1000 + ((1-30/100)*(PA*(HA+HL)+PO*HO)/7)*365/1000);
+
 	    	document.getElementsByClassName("elec")[0].innerHTML =
 
-	    		"Consommation énergétique = " + (SPM/1000).toFixed(3) + " kW.h\n"
+	    		"Ordinateur = " + ((((30/100*(PA*HA+PL*HL+PO*HO)/7)*365/1000 + ((1-30/100)*(PA*(HA+HL)+PO*HO)/7)*365/1000)/10000)*24*30*12).toFixed(2) + " kgCO2e";}
 
-	    		+ "Équivalent CO2 : " + (SPM/10000).toFixed(4) + " kg\n"
+	    function conso_telephone(){
+	    	let telephone_age = document.getElementById("telephone_age").value;
+	    	document.getElementsByClassName("telephone")[0].innerHTML =
 
-	    		+ "Sur un an : " + (SPM/10000).toFixed(5)*24*30*12 + " kg";}
+	    		"Téléphone = " + (39.1/(telephone_age+1)).toFixed(2) + " kgCO₂e / an";}
+
+	    function conso_tv(){
+	    	let tv_age = document.getElementById("tv_age").value;	    	
+	    	document.getElementsByClassName("tv")[0].innerHTML =
+
+	    		"Télévision = " + (0.01/(tv_age+1)).toFixed(2) + " kgCO₂e / an";}
+
+	    		function conso_internet(){
+	    	let temps_internet = document.getElementById("temps_internet").value;	    	
+	    	document.getElementsByClassName("internet")[0].innerHTML =
+
+	    		"Internet = " + ((0.01*temps_internet)*365).toFixed(2) + " kgCO₂e / an";}
 
 	    function conso_bus(){
 	    	let bus_h = document.getElementById("bus_h").value;
 	    	let bus_sem = document.getElementById("bus_sem").value;
-	    	let total = bus_h*bus_sem*2;
 	    	document.getElementsByClassName("bus")[0].innerHTML =
 
-	    		"Impact bus = " + total + " kg";}
+	    		"Bus = " + (bus_h*bus_sem*2).toFixed(2) + " kgCO₂e / an";}
 
-		function conso_telephone(){
-	    	let telephone_age = document.getElementById("telephone_age").value;	    	
-	    	let total = 39.1/(telephone_age+1);
-	    	document.getElementsByClassName("telephone")[0].innerHTML =
+	    function conso_voiture(){
+	    	let age_voiture = document.getElementById("age_voiture").value;
+	    	let km_an = document.getElementById("km_an_v").value;
+	    	document.getElementsByClassName("voiture")[0].innerHTML =
 
-	    		"Impact téléphone = " + total + " kgCO₂e / an";}
+	    		"Voiture = " + (((age_voiture < 10 ? 5600*5/100 : 0) + km_an*0.2)/1.2).toFixed(2) + " kgCO₂e / an";}
 
-	    function conso_tv(){
-	    	let tv_age = document.getElementById("tv_age").value;	    	
-	    	let total = 0.01/(tv_age+1);
-	    	document.getElementsByClassName("tv")[0].innerHTML =
+	    function conso_train(){
+	    	let km_an = document.getElementById("km_an_t").value;
+	    	document.getElementsByClassName("train")[0].innerHTML =
 
-	    		"Impact Télévision = " + total + " kgCO2e";}
+	    		"Train = " + (km_an*0.01).toFixed(2) + " kgCO2e";}</script></head>
 
-	    		function conso_internet(){
-	    	let temps_internet = document.getElementById("temps_internet").value;	    	
-	    	let total =(0.01*temps_internet)*365;
-	    	document.getElementsByClassName("internet")[0].innerHTML =
-
-	    		"Impact Internet = " + total + " kgCO2e";}
-	    	</script></head>
-
-  	<header><h1 class='titre'>Projet - Calculette Eco conception logicielle</h1></header>
+  	<header><h1 class='titre'>Calculette</h1></header>
 
   	<style type="text/css">
-  		body{
-  			background-color: #EFEAE4;
-  		}
   		header {
-  			background-color: #3a3a3a;
+  			background-color: #4CAF50;
   			padding: 20px;
   			margin: 0px 0px 10px;
   			text-align: center;
   			font-family: arial;
-  			color: white;
+  			border-radius: 25px;
   		}
-  	
 		div.calcul{
-  			background-color:#81a725 ;
+  			background-color: #288DCB;
   			padding: 20px;
   			font-family: arial;
-  			margin: 0px 0px 10px;
-  			color: white;
+  			margin: 0px 0px 10px;;
+  			border-radius: 25px;
 		}
 		p.sous-titre {
 			font-family: arial;
-			font-size: 20px;
+			font-size: 26px;
+			font-weight: bold;
+			border-radius: 15px;
+			background-color: #1B68AF;
+			padding: 5px;
+			text-shadow: 1px 1px gray;
+			text-align: center;
 		}
 		p.sous-sous-titre {
 			font-family: arial;
-			font-size: 15px;
+			font-size: 18px;
 		}
 
 		input {
 			font-family: arial;
 			font-size: 15px;
 			height: 25px;
- 			width: 250px;
- 			background-color: #EFEAE4;	
- 				
+ 			width: 250px;		
+		}
+		button {
+			background-color: #4CAF50;
+  			border-radius: 12px;
+  			text-align: center;
+  			font-size: 16px;
+  			position: left;
+		}
+		p#resultat {
+			background-color: #4CAF50;
+  			border-radius: 12px;
+  			font-size: 22px;
+  			text-align: center;
+  			width: 320px;
+  			margin: 15px auto;
+
+		}
+		input {
+			border-radius: 5px;
+			background-color: #F0F5F8;
+		}
+		body {
+			background: black;
 		}
 	</style>
 
     <body>
-
     	<div class="calcul">
-    		<p class="sous-titre">L'empreinte de vos déplacements</p>
-	    	<input id="bus_h" type="number" placeholder="Heures/semaine"/>
-	  		<input id="bus_sem" type="number" placeholder="Nombre de semaines"/>
-
-	  		<button onclick="conso_bus()">Calculer</button>
-			<p class="bus"></p></div>
-
-	<div class="calcul">
     		<p class="sous-titre">L'empreinte numérique</p>
-    		<p class="sous-sous-titre">Téléphone :</p>
+    		<p class="sous-sous-titre">Téléphone</p>
 	    	<input id="telephone_age" type="number" placeholder="Age du téléphone"/>
 
 	  		<button onclick="conso_telephone()">Calculer</button>
-			<p class="telephone"></p>   		
+			<p id="resultat" class="telephone"></p>   		
 
-			<p class="sous-sous-titre">Télévision :</p>
+			<p class="sous-sous-titre">Télévision</p>
     		<input id="tv_age" type="number" placeholder="Age de la télévision"/>
 
 	  		<button onclick="conso_tv()">Calculer</button>
-			<p class="tv"></p>
+			<p id="resultat" class="tv"></p>
 
-			<p class="sous-sous-titre">Internet :</p>
+			<p class="sous-sous-titre">Internet</p>
     		<input id="temps_internet" type="number" placeholder="Temps d'internet par jour en heure"/>
 
 	  		<button onclick="conso_internet()">Calculer</button>
-			<p class="internet"></p>
+			<p id="resultat" class="internet"></p>
 
-			<p class="sous-sous-titre">Consommation électrique de votre ordinateur :</p>
+			<p class="sous-sous-titre">Ordinateur</p>
 	    	<input id="elec_PA" type="number" placeholder="Consommation (W, actif)"/>
 	  		<input id="elec_PL" type="number" placeholder="Consommation (W, veille)"/>
 	  		<input id="elec_PO" type="number" placeholder="Consommation (W, arrêt)"/>
@@ -136,11 +154,39 @@
 	  		<input id="elec_HO" type="number" placeholder="Utilisation (h, arrêt)"/>
 
 	  		<button onclick="conso_elec()">Calculer</button>
-			<p class="elec"></p>
+			<p id="resultat" class="elec"></p>
 
 
 
-		</div>    	   	
+		</div> 
+    		
+    	</div>
+    	<div class="calcul">
+    		<p class="sous-titre">L'empreinte du transport</p>
+    		<p class="sous-sous-titre">Bus</p>
+	    	<input id="bus_h" type="number" placeholder="Heures/semaine"/>
+	  		<input id="bus_sem" type="number" placeholder="Nombre de semaines"/>
+
+	  		<button onclick="conso_bus()">Calculer</button>
+			<p id="resultat" class="bus"></p>
+    		
+    		<p class="sous-sous-titre">Voiture</p>
+	  		<input id="km_an_v" type="number" placeholder="Km/an"/>
+	  		<input id="age_voiture" type="number" placeholder="Âge voiture (années)"/>
+
+	  		<button onclick="conso_voiture()">Calculer</button>
+			<p id="resultat" class="voiture"></p>
+    		
+    		<p class="sous-sous-titre">Train</p>
+	  		<input id="km_an_t" type="number" placeholder="Km/an"/>
+
+	  		<button onclick="conso_train()">Calculer</button>
+			<p id="resultat" class="train"></p>
+    		
+    	</div>
+
+    	<div class="total">
+    		<p id="total"></p>
+    	</div>
     </body>
-
 </html>
