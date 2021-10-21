@@ -32,7 +32,29 @@
 	    	let total = bus_h*bus_sem*2;
 	    	document.getElementsByClassName("bus")[0].innerHTML =
 
-	    		"Impact bus = " + total + " kg";}</script></head>
+	    		"Impact bus = " + total + " kg";}
+
+		function conso_telephone(){
+	    	let telephone_age = document.getElementById("telephone_age").value;	    	
+	    	let total = 39.1/(telephone_age+1);
+	    	document.getElementsByClassName("telephone")[0].innerHTML =
+
+	    		"Impact téléphone = " + total + " kgCO₂e / an";}
+
+	    function conso_tv(){
+	    	let tv_age = document.getElementById("tv_age").value;	    	
+	    	let total = 0.01/(tv_age+1);
+	    	document.getElementsByClassName("tv")[0].innerHTML =
+
+	    		"Impact Télévision = " + total + " kgCO2e";}
+
+	    		function conso_internet(){
+	    	let temps_internet = document.getElementById("temps_internet").value;	    	
+	    	let total =(0.01*temps_internet)*365;
+	    	document.getElementsByClassName("internet")[0].innerHTML =
+
+	    		"Impact Internet = " + total + " kgCO2e";}
+	    	</script></head>
 
   	<header><h1 class='titre'>Calculette</h1></header>
 
@@ -54,11 +76,51 @@
 			font-family: arial;
 			font-size: 20px;
 		}
+		p.sous-sous-titre {
+			font-family: arial;
+			font-size: 15px;
+		}
+
+		input {
+			font-family: arial;
+			font-size: 15px;
+			height: 25px;
+ 			width: 250px;
+ 				
+		}
 	</style>
 
     <body>
+
     	<div class="calcul">
-    		<p class="sous-titre">Consommation électrique de votre ordinateur :</p>
+    		<p class="sous-titre">L'empreinte de vos déplacements</p>
+	    	<input id="bus_h" type="number" placeholder="Heures/semaine"/>
+	  		<input id="bus_sem" type="number" placeholder="Nombre de semaines"/>
+
+	  		<button onclick="conso_bus()">Calculer</button>
+			<p class="bus"></p></div>
+
+	<div class="calcul">
+    		<p class="sous-titre">L'empreinte numérique</p>
+    		<p class="sous-sous-titre">Téléphone</p>
+	    	<input id="telephone_age" type="number" placeholder="Age du téléphone"/>
+
+	  		<button onclick="conso_telephone()">Calculer</button>
+			<p class="telephone"></p>   		
+
+			<p class="sous-sous-titre">Télévision</p>
+    		<input id="tv_age" type="number" placeholder="Age de la télévision"/>
+
+	  		<button onclick="conso_tv()">Calculer</button>
+			<p class="tv"></p>
+
+			<p class="sous-sous-titre">Internet</p>
+    		<input id="temps_internet" type="number" placeholder="Temps d'internet par jour en heure"/>
+
+	  		<button onclick="conso_internet()">Calculer</button>
+			<p class="internet"></p>
+
+			<p class="sous-sous-titre">Consommation électrique de votre ordinateur :</p>
 	    	<input id="elec_PA" type="number" placeholder="Consommation (W, actif)"/>
 	  		<input id="elec_PL" type="number" placeholder="Consommation (W, veille)"/>
 	  		<input id="elec_PO" type="number" placeholder="Consommation (W, arrêt)"/>
@@ -67,18 +129,11 @@
 	  		<input id="elec_HO" type="number" placeholder="Utilisation (h, arrêt)"/>
 
 	  		<button onclick="conso_elec()">Calculer</button>
-			<p class="elec"></p></div>
-    		
-    	</div>
-    	<div class="calcul">
-    		<p class="sous-titre">L'empreinte de vos déplacements</p>
-	    	<input id="bus_h" type="number" placeholder="Heures/semaine"/>
-	  		<input id="bus_sem" type="number" placeholder="Nombre de semaines"/>
+			<p class="elec"></p>
 
-	  		<button onclick="conso_bus()">Calculer</button>
-			<p class="bus"></p></div>
-    		
-    	</div>
+
+
+		</div>    	   	
     </body>
 
 </html>
