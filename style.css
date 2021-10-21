@@ -1,0 +1,83 @@
+header {
+  			background-color: #4CAF50;
+  			padding: 20px;
+  			margin: 0px 0px 10px;
+  			text-align: center;
+  			font-family: arial;
+  			border-radius: 25px;
+  		}
+		div.calcul{
+  			background-color: #288DCB;
+  			padding: 20px;
+  			font-family: arial;
+  			margin: 0px 0px 10px;;
+  			border-radius: 25px;
+		}
+		p.sous-titre {
+			font-family: arial;
+			font-size: 26px;
+			font-weight: bold;
+			border-radius: 15px;
+			background-color: #1B68AF;
+			padding: 5px;
+			text-shadow: 1px 1px gray;
+			text-align: center;
+		}
+		p.sous-sous-titre {
+			font-family: arial;
+			font-size: 18px;
+		}
+
+		input {
+			font-family: arial;
+			font-size: 15px;
+			height: 25px;
+ 			width: 250px;		
+		}
+		button {
+			background-color: #4CAF50;
+  			border-radius: 12px;
+  			text-align: center;
+  			font-size: 16px;
+  			position: left;
+		}
+		p#resultat {
+			background-color: #4CAF50;
+  			border-radius: 8px;
+  			font-size: 22px;
+  			text-align: center;
+  			width: 320px;
+  			margin: 15px auto;
+
+		}
+		input {
+			border-radius: 5px;
+			background-color: #F0F5F8;
+		}
+		body {
+			background: black;
+			font-family: arial;
+		}
+		button.total__ {
+			background-color: #4CAF50;
+  			border-radius: 16px;
+  			font-size: 25px;
+  			margin: 10px auto;
+		}
+		p.total {
+			background-color: #4CAF50;
+  			border-radius: 24px;
+  			border-color: #3C8A40;
+  			border-width: 5px;
+  			max-width: 500px;
+  			text-align: center;
+  			font-size: 35px;
+  			margin: 15px auto;
+  			font-weight: bold;
+		}
+		div.total_ {
+			text-align: center;
+		}
+		.temps_execution {
+			color: white;
+		}
